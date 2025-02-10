@@ -1,0 +1,22 @@
+{% extends "layouts/main_layout.html" %}
+
+{% block title %}{{ title }}{% endblock title %}
+
+{% block nav %}
+                <div>
+                    <a href="{% url 'encyclopedia:index' %}">Home</a>
+                </div>
+                <div>
+                    <a href="{% url 'encyclopedia:create' %}">Create Page</a>
+                </div>
+{% endblock nav %}
+
+{% block body %}
+    {% if entry %}
+        {{entry | safe}}
+    {% else %}
+    {% comment %} Replace with a bootstrap element {% endcomment %}
+        <h1> This Page Doesn't Exist Yet</h1>
+    {% endif %}
+    <a href="{% url "encyclopedia:edit" title %}">Edit page</a>
+{% endblock body %}

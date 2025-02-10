@@ -1,0 +1,22 @@
+{% extends "layouts/main_layout.html" %}
+
+{% block title %}Create Page{% endblock title %}
+
+{% block nav %}
+                <div>
+                    <a href="{% url 'encyclopedia:index' %}">Home</a>
+                </div>
+{% endblock nav %}
+
+{% block body %}
+                <h1>Edit the Page's Content:</h1>
+                <h2> {{ title }} </h2>
+                {% if error %}
+                    <h3>{{ error }}</h3>
+                {% endif %}
+                <form method="post">
+                    {% csrf_token %}
+                    {{form}}
+                <input type="submit" value="Save">
+                </form>
+{% endblock body %}
